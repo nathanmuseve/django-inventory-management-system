@@ -1,0 +1,22 @@
+{% extends 'invApp/layout.html' %}
+
+
+{% block title %}
+  Home
+{% endblock title %}
+  
+  {% block content %}
+    <h1 class="text-center">Product Form</h1>
+    <form method="POST"class="jumbotron">
+      {% csrf_token %}
+      {{ form }}
+      <div class=" d-flex pt-4 px-5">
+        <button type="submit" class="btn btn-primary w-50">Save Product</button>
+        <button type="reset" class="btn btn-success w-50 ml-3">Cancel</button>
+      </div>
+    </form>
+
+    <p class="text-center">Go to Availbale products<a class=" btn btn-warning m-2" href="{% url 'invApp:product_list' %}">Products in Stock</a></p>
+
+  {% endblock content %}
+    

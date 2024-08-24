@@ -1,0 +1,45 @@
+{% extends 'invApp/layout.html' %}
+
+
+{% block title %}
+  Product List
+{% endblock title %}
+  
+  {% block content %}
+    <h1 class="text-center">Product</h1>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>SKU</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Supplier</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        {% for product in products %}
+          <tr>
+            <td>{{ product.product_id }}</td>
+            <td>{{ product.product_name }}</td>
+            <td>{{ product.sku }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.supplier }}</td>
+            <td class="text-center">
+              <a href="{% url 'invApp:product_create' %}" class="btn btn-success mx-2">Add</a>
+              <a href="{% url 'invApp:product_update' product.product_id %}" class="btn btn-warning">Update</a>
+              <a href="{% url 'invApp:product_delete' product.product_id %}" class="btn btn-danger mx-2">Delete</a>
+            </td>
+
+          </tr>
+        {% endfor %}
+          
+      </tbody>
+    </table>
+
+    <p class="text-center">Go to Home Page<a class=" btn btn-primary m-2" href="{% url 'invApp:home' %}">Home</a></p>
+  {% endblock content %}
