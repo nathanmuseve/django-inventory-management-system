@@ -47,10 +47,9 @@ def product_delete_view(request, product_id):
   product = Product.objects.get(product_id=product_id)
   if request.method == "POST":
     product.delete()
-    return redirect('invApp:product_list')
+    return redirect('invApp:delete_success')
   return render(request, 'invApp/product_confirm_delete.html', { 'product':product })
-
-# 404
-
-def custom_404(request):
-    return render(request, '404.html')
+# Delete success
+def delete_success_view(request, product_id):
+  product = Product.objects.get(product_id=product_id)
+  return render(request, 'invApp/delete_success.html', { 'product':product })
